@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Hasan ❤️ Gülcan</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, sans-serif;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background: linear-gradient(135deg, #ff4e8a, #ff8fb1);
+    overflow:hidden;
+    color:white;
+    text-align:center;
+}
+
+.container{
+    background: rgba(255,255,255,0.15);
+    padding:40px;
+    border-radius:25px;
+    backdrop-filter: blur(10px);
+    box-shadow:0 0 25px rgba(0,0,0,0.2);
+    width:90%;
+    max-width:700px;
+}
+
+h1{
+    font-size:50px;
+    margin-bottom:15px;
+}
+
+p{
+    font-size:22px;
+    margin-bottom:25px;
+}
+
+.timer{
+    display:grid;
+    grid-template-columns: repeat(4,1fr);
+    gap:15px;
+    margin-top:20px;
+}
+
+.box{
+    background: rgba(255,255,255,0.2);
+    padding:20px;
+    border-radius:20px;
+}
+
+.number{
+    font-size:40px;
+    font-weight:bold;
+}
+
+.label{
+    margin-top:8px;
+    font-size:18px;
+}
+
+.love-text{
+    margin-top:30px;
+    font-size:24px;
+    animation: glow 2s infinite alternate;
+}
+
+@keyframes glow{
+    from{
+        text-shadow:0 0 10px white;
+    }
+    to{
+        text-shadow:0 0 25px pink;
+    }
+}
+
+.heart{
+    position:absolute;
+    color:white;
+    animation: float 6s linear infinite;
+    opacity:0.7;
+}
+
+@keyframes float{
+    0%{
+        transform: translateY(100vh) scale(0);
+    }
+    100%{
+        transform: translateY(-10vh) scale(1);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>❤️ Hasan & Gülcan ❤️</h1>
+
+    <p>
+        12 Nisan 2024 tarihinden beri birlikteyiz 💖
+    </p>
+
+    <div class="timer">
+
+        <div class="box">
+            <div class="number" id="days">0</div>
+            <div class="label">Gün</div>
+        </div>
+
+        <div class="box">
+            <div class="number" id="hours">0</div>
+            <div class="label">Saat</div>
+        </div>
+
+        <div class="box">
+            <div class="number" id="minutes">0</div>
+            <div class="label">Dakika</div>
+        </div>
+
+        <div class="box">
+            <div class="number" id="seconds">0</div>
+            <div class="label">Saniye</div>
+        </div>
+
+    </div>
+
+    <div class="love-text">
+        Sonsuza kadar Hasan ❤️ Gülcan
+    </div>
+</div>
+
+<script>
+
+const startDate = new Date("April 12, 2024 00:00:00").getTime();
+
+function updateTimer(){
+
+    const now = new Date().getTime();
+    const diff = now - startDate;
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+
+    const hours = Math.floor(
+        (diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+    );
+
+    const minutes = Math.floor(
+        (diff % (1000 * 60 * 60)) / (1000 * 60)
+    );
+
+    const seconds = Math.floor(
+        (diff % (1000 * 60)) / 1000
+    );
+
+    document.getElementById("days").innerText = days;
+    document.getElementById("hours").innerText = hours;
+    document.getElementById("minutes").innerText = minutes;
+    document.getElementById("seconds").innerText = seconds;
+}
+
+setInterval(updateTimer, 1000);
+updateTimer();
+
+function createHeart(){
+
+    const heart = document.createElement("div");
+
+    heart.classList.add("heart");
+    heart.innerHTML = "❤️";
+
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (Math.random() * 20 + 15) + "px";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 6000);
+}
+
+setInterval(createHeart, 300);
+
+</script>
+
+</body>
+</html>
